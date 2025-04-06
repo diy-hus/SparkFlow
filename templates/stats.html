@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stress Statistics</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f8ff; }
+        h1 { color: #4682b4; }
+        canvas { max-width: 600px; margin: 20px auto; }
+        p { font-size: 18px; }
+        a { color: #4682b4; text-decoration: none; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Your Stress Statistics</h1>
+    <p>Average Stress Level: {{ avg_stress | round(2) }}</p>
+    {% if stress_levels %}
+        <canvas id="stressChart"></canvas>
+        <script>
+            const ctx = document.getElementById('stressChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: {{ timestamps | tojson }}, // Thời gian
+                    datasets: [{
+                        label: 'Stress Level',
+                        data: {{ stress_levels | tojson }}, // Mức stress
+                        borderColor: '#4682b4',
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: { title: { display: true, text: 'Time' } },
+                        y: { title: { display: true, text: 'Stress Level' }, min: 0, max: 10 }
+                    }
+                }
+            });
+        </script>
+    {% else %}
+        <p>No stress data available yet!</p>
+    {% endif %}
+    <p><a href="/">Back to Home</a> | <a href="/history">View History</a></p>
+</body>
+</html>

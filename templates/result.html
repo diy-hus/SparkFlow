@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Plan</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f8ff; }
+        h1 { color: #4682b4; }
+        p { background-color: #e6e6fa; padding: 20px; border-radius: 10px; display: inline-block; }
+        a { color: #4682b4; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Your Relaxation Plan</h1>
+    <p>{{ plan | replace('\n', '<br>') | safe }}</p>
+    <p><a href="/">Create Another Plan</a> | <a href="/history">View Past Plans</a></p>
+</body>
+</html>
