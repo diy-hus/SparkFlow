@@ -5,9 +5,10 @@ import requests
 import os
 
 app = Flask(__name__)
-
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+#GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
 # Lấy API Key từ Secrets
-GEMINI_API_KEY = os.getenv("AIzaSyA1H4Oa2CJ362v9ySlid4ISJb6PTVkZDXs")
+#GEMINI_API_KEY = os.getenv("AIzaSyA1H4Oa2CJ362v9ySlid4ISJb6PTVkZDXs")
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
 
 
